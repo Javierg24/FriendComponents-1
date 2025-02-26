@@ -45,11 +45,6 @@ export class CarritoService {
     return this.http.get(`${this.apiUrl}/GET_CANTIDAD_TOTAL?usuario_id=${usuarioId}`);
   }
 
-  vaciarCarrito(usuarioId: number): Observable<any> {
-    const url = `${this.apiUrl}?action=DELETE_ALL&usuario_id=${usuarioId}`;
-    return this.http.delete(url);
-  }
-
 
 
 

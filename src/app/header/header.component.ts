@@ -12,27 +12,26 @@ export class HeaderComponent implements OnInit {
   cartCount: number = 0;
   userName: string | null = null;
   userEmail: string | null = null;
-  isLoggedIn: boolean = false;
 
   constructor(
-    private cartCountService: CantidadCarritoService,
-    private authService: AuthService,
+    private cartCountService: CantidadCarritoService, 
+    private authService: AuthService, 
     private router: Router
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     // Suscribirse al BehaviorSubject para actualizar el contador en tiempo real
-    this.cartCountService.cartCount$.subscribe(count => {
+    this.cartCountService.cartCount$.subscribe(count => {      
       this.cartCount = count;
     });
-
+  
     // Obtener usuario desde el localStorage (o AuthService)
     const user = localStorage.getItem('user');
     if (user) {
       const parsedUser = JSON.parse(user);
       this.userName = parsedUser.nombre || 'Invitado';
       this.userEmail = parsedUser.correo || 'No disponible';
-
+  
       // Verifica que el objeto usuario tenga el id esperado
       if (parsedUser.id) {
         // Cargar la cantidad de productos del carrito
@@ -40,23 +39,18 @@ export class HeaderComponent implements OnInit {
       } else {
         console.error('El objeto usuario no tiene el campo id:', parsedUser);
       }
-
-      this.isLoggedIn =true;
-    }else {
-      this.isLoggedIn = false;
     }
-
   }
-
-  cargarCantidadCarrito(userId: number) {
+  
+  cargarCantidadCarrito(userId: number) {    
     this.cartCountService.obtenerCantidadCarrito(userId).subscribe(
-      (cantidad) => {
+      (cantidad) => {        
         this.cartCountService.updateCartCount(cantidad);
       },
       (error) => console.error('Error al cargar la cantidad del carrito', error)
     );
   }
-
+  
   logout(): void {
     this.authService.logout();
   }

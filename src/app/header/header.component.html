@@ -1,14 +1,14 @@
 <header class="header">
   <div class="logo">
     <a routerLink="/inicio">
-      <img src="assets/images/logo.png">
+      <img src="assets/images/logo.png" alt="Logo">
     </a>
   </div>
   <div class="text-container">
-    <span><h1 routerLink="/inicio">FriendComponents</h1></span>
+    <span><a routerLink="/inicio">FriendComponents</a></span>
   </div>
   <div class="images-container">
-    <div *ngIf="isLoggedIn" class="dropdown">
+    <div class="dropdown">
       <button class="btn btn-primary dropdown-toggle" type="button" id="userDropdown" data-bs-toggle="dropdown"
         aria-expanded="false">
         {{ userName }}

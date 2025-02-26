@@ -118,18 +118,19 @@ export class CarritoComponent implements OnInit {
 
   // Realizar pedido (simulación)
   realizarPedido() {
+    
     const usuario = JSON.parse(localStorage.getItem('user') || '{}');
     if (!usuario.correo) {
       console.error('El usuario no tiene un email registrado');
       return;
     }
-
+    
     const pedido = {
       email: usuario.correo,
       productos: this.carrito,
       total: this.getTotal()
     };
-
+  
     // Enviar datos al backend
     fetch('http://localhost/FriendComponents/controller/sendMail.php', {
       method: 'POST',
@@ -140,22 +141,8 @@ export class CarritoComponent implements OnInit {
     .then(data => {
       console.log(data);
       alert('Pedido realizado con éxito. Se ha enviado un correo de confirmación.');
-
-      // Vaciar el carrito del usuario después de realizar el pedido
-      this.carritoService.vaciarCarrito(this.usuarioId).subscribe(
-        () => {
-          this.carrito = [];  // Limpiar el carrito local
-          this.actualizarContador();  // Actualizar contador
-          console.log('Carrito vacío exitosamente');
-        },
-        (error) => {
-          console.error('Error al vaciar el carrito:', error);
-        }
-      );
     })
     .catch(error => console.error('Error al enviar el correo:', error));
   }
+  
 }
-  
-  
-
