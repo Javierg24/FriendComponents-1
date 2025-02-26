@@ -45,11 +45,11 @@ export class AuthService {
 
   // Método para verificar si el usuario está autenticado
   isAuthenticated(): boolean {
-    return localStorage.getItem('user') !== null || this.cookieService.check('user');
+    return localStorage.getItem('user') !== null && this.cookieService.check('user');
   }
   // Obtener usuario desde localStorage o cookies
   getUser(): any {
-    const user = localStorage.getItem('user') || this.cookieService.get('user');
+    const user = localStorage.getItem('user') && this.cookieService.get('user');
     return user ? JSON.parse(user) : null;
   }
 

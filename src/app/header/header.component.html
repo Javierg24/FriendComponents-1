@@ -8,7 +8,7 @@
     <span><h1 routerLink="/inicio">FriendComponents</h1></span>
   </div>
   <div class="images-container">
-    <div class="dropdown">
+    <div *ngIf="isLoggedIn" class="dropdown">
       <button class="btn btn-primary dropdown-toggle" type="button" id="userDropdown" data-bs-toggle="dropdown"
         aria-expanded="false">
         {{ userName }}
@@ -22,6 +22,7 @@
         <li><button class="dropdown-item logout" (click)="logout()">Cerrar sesión</button></li>
       </ul>
     </div>
+    
     <a routerLink="/carrito" class="cart-icon">
       <img src="assets/images/carrito.png" alt="compra">
       <!-- Badge para mostrar la cantidad de productos -->

@@ -12,6 +12,7 @@ export class HeaderComponent implements OnInit {
   cartCount: number = 0;
   userName: string | null = null;
   userEmail: string | null = null;
+  isLoggedIn:boolean =false;
 
   constructor(
     private cartCountService: CantidadCarritoService, 
@@ -25,6 +26,13 @@ export class HeaderComponent implements OnInit {
       this.cartCount = count;
     });
   
+    this.isLoggedIn = this.authService.isAuthenticated();
+
+    if (this.isLoggedIn) {
+      const user = JSON.parse(localStorage.getItem('user') || '{}');
+      this.userName = user.nombre || 'Usuario';
+      this.userEmail = user.correo || '';
+    }
     // Obtener usuario desde el localStorage (o AuthService)
     const user = localStorage.getItem('user');
     if (user) {
