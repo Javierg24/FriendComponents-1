@@ -27,7 +27,7 @@
   text-align: center;
 }
 
-.header .text-container span a {
+.header .text-container span h1 {
   color: white;
   font-size: 1.5rem; /* Usa unidades relativas para adaptarse a diferentes tamaños de pantalla */
   font-weight: bold;
@@ -36,7 +36,7 @@
   word-wrap: break-word; /* Permite dividir palabras largas si es necesario */
 }
 
-.header .text-container span a:hover {
+.header .text-container span h1:hover {
   cursor: pointer;
 }
 

@@ -21,9 +21,9 @@
   <h2 class="titulo-categorias">Categorías</h2>
   <div class="categorias-container">
     <div *ngFor="let categoria of categorias" class="categoria">
-      <a [routerLink]="['/productos', categoria.nombre]" (click)="seleccionarCategoria(categoria.nombre)">
+      <a [routerLink]="['/productos', categoria.nombre]" (click)="seleccionarCategoria(categoria.nombre)"  [attr.aria-label]="'Ver productos de ' + categoria.nombre">
         <div class="imagen">
-          <img [src]="categoria.imagen" class="categoria-imagen" />
+          <img [src]="categoria.imagen" [alt]="'Imagen de ' + categoria.nombre" class="categoria-imagen" />
         </div>
         <p class="categoria-nombre">
           {{ categoria.nombre }}
