@@ -19,8 +19,8 @@
       <h1>{{ categoriaSeleccionada }}</h1>
       <div *ngFor="let categoria of categorias">
         <div *ngIf="categoria.nombre === categoriaSeleccionada">
-          <div *ngFor="let producto of productos" class="product-card" [routerLink]="['/producto', producto.id]">
-            <img [src]="producto.imagen" alt="{{ producto.nombre }}" title="{{producto.nombre}}">
+          <div *ngFor="let producto of productos" class="product-card" [routerLink]="['/producto', producto.id]"  [attr.aria-label]="'Ver productos de ' + categoria.nombre">
+            <img [src]="producto.imagen" alt="{{ producto.nombre+'-producto' }}" title="{{producto.nombre +'-ico'}}">
             <div class="product-info">
               <h2>{{ producto.nombre }}</h2>
               <p>{{ producto.descripcion }}</p>

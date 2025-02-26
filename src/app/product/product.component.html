@@ -2,15 +2,15 @@
 <div class="product-details">
   <div class="product-container">
     <div class="product-image">
-      <img [src]="producto.imagen" alt="{{ producto.nombre }}" title="{{producto.nombre}}"/>
+      <img [src]="producto.imagen" alt="{{ producto.nombre +'-product' }}" title="{{producto.nombre}}"/>
     </div>
     <div class="product-info">
       <h2>{{ producto.nombre }}</h2>
       <p class="description">{{ producto.descripcion }}</p>
-      <p class="price"><strong>Precio:</strong> {{ producto.precio | currency:'EUR' }}</p>
+      <h2 class="price"><strong>Precio:</strong> {{ producto.precio | currency:'EUR' }}</h2>
       <p class="rating">
         <strong>Valoración: {{ producto.valoracion }}</strong> 
-        <img src="../../assets/images/estrella.png" alt="estrella" title="estrella"/>
+        <img src="../../assets/images/estrella.png" alt="estrella" title="estrella-ico"/>
       </p>
       <div class="actions">
         <button class="btn add-to-cart" (click)="agregarAlCarrito()">Añadir al Carrito</button>
@@ -27,7 +27,7 @@
         <span class="comment-author">Por: {{ comentario.nombre }}</span>
         <span class="comment-date">Fecha: {{ comentario.fecha }}</span>
         <span class="comment-rating"><strong> Nota: {{ comentario.valoracion }} </strong>
-          <img src="../../assets/images/estrella.png" alt="estrella" title="estrella"/>
+          <img src="../../assets/images/estrella.png" alt="estrella" title="estrella-ico"/>
         </span>
       </div>
     </div>
@@ -36,16 +36,16 @@
     <!-- Formulario para agregar comentario -->
     <form [formGroup]="comentarioForm" (ngSubmit)="agregarComentario()">
       <div class="form-group">
-        <label for="nota">Nombre:</label>
-        <input type="text" formControlName="persona" placeholder="Tu nombre" required>
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" formControlName="persona" placeholder="Tu nombre" required>
         <div *ngIf="comentarioForm.get('persona')?.touched && comentarioForm.get('persona')?.invalid" class="error">
           <small *ngIf="comentarioForm.get('persona')?.errors?.['required']">El nombre es obligatorio.</small>
         </div>
       </div>
 
       <div class="form-group">
-        <label for="nota">Comentario:</label>
-        <textarea formControlName="mensaje" placeholder="Comentario" required></textarea>
+        <label for="comentario">Comentario:</label>
+        <textarea formControlName="mensaje" id="comentario" placeholder="Comentario" required></textarea>
         <div *ngIf="comentarioForm.get('mensaje')?.touched && comentarioForm.get('mensaje')?.invalid" class="error">
           <small *ngIf="comentarioForm.get('mensaje')?.errors?.['required']">El comentario es obligatorio.</small>
         </div>

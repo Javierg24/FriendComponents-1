@@ -6,7 +6,7 @@
       <div class="producto-info">
         <div class="producto-imagen">
           <!-- Mostrar la imagen del producto -->
-          <img [src]="producto.imagen" [alt]="producto.nombre" [title]="producto.nombre">
+          <img [src]="producto.imagen" [alt]="producto.nombre+'-product'" [title]="producto.nombre">
         </div>
         <!-- Mostrar el nombre del producto -->
         <span>{{ producto.nombre }}</span>
@@ -23,7 +23,7 @@
     </div>
 
     <div class="total">
-      <h3>Total: {{ getTotal() | currency:'EUR' }}</h3>
+      <p class="precio-total">Total: {{ getTotal() | currency:'EUR' }}</p>
     </div>
 
     <button class="realizar-pedido" (click)="realizarPedido()">Realizar Pedido</button>
