@@ -34,14 +34,18 @@
 </div>
 
 <!-- Modal de Cookies -->
-<div class="cookie-modal" *ngIf="mostrarModal">
-  <div class="cookie-content">
-    <h2>Política de Cookies</h2>
-    <p>Este sitio web utiliza cookies para mejorar su experiencia. Aceptarlas nos permite ofrecerle una mejor navegación.</p>
-    <div class="cookie-buttons">
-      <button (click)="aceptarCookies()">Aceptar</button>
-      <button (click)="rechazarCookies()">Rechazar</button>
+<div *ngIf="mostrarModal">
+  <div class="cookie-overlay"></div> <!-- Fondo oscuro cubriendo todo -->
+  <div class="cookie-modal">
+    <div class="cookie-content">
+      <h2>Política de Cookies</h2>
+      <p>Este sitio web utiliza cookies para mejorar su experiencia. Aceptarlas nos permite ofrecerle una mejor navegación.</p>
+      <div class="cookie-buttons">
+        <button (click)="aceptarCookies()">Aceptar</button>
+        <button (click)="rechazarCookies()">Rechazar</button>
+      </div>
     </div>
   </div>
 </div>
+
 

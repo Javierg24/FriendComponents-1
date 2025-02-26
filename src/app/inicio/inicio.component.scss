@@ -4,6 +4,9 @@ $color-fondo: #f8f6f6;
 $color-texto: #333;
 $fuente: Verdana, Geneva, Tahoma, sans-serif;
 
+
+
+
 .wrapper {
   min-height: 100vh;
   justify-content: center;
@@ -143,55 +146,77 @@ $fuente: Verdana, Geneva, Tahoma, sans-serif;
   color: inherit;
 }
 
+.cookie-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); // Oscurece todo excepto el modal
+  z-index: 999; // Debe estar debajo del modal
+}
+
 .cookie-modal {
   position: fixed;
-  bottom: 20px;
+  bottom: 30%;
   left: 50%;
   transform: translateX(-50%);
-  background: rgba(0, 0, 0, 0.9);
-  color: white;
-  padding: 20px;
-  border-radius: 10px;
+  background: #ffffff;
+  color: #2F1893;
+  padding: 80px;
+  border-radius: 12px;
   text-align: center;
   width: 80%;
-  max-width: 400px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  max-width: 450px;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
   z-index: 1000;
+  font-family: 'Arial', sans-serif;
 
   .cookie-content {
     h2 {
-      font-size: 1.5rem;
-      margin-bottom: 10px;
+      font-size: 1.7rem;
+      margin-bottom:5%;
+      font-weight: bold;
     }
 
     p {
       font-size: 1rem;
-      margin-bottom: 15px;
+      margin-bottom: 10%;
+      color: #2F1893;
     }
 
     .cookie-buttons {
       display: flex;
       justify-content: space-between;
+      gap: 10px;
 
       button {
-        background: #ff8c00;
+        flex: 1;
+        background: #2F1893;
         border: none;
-        padding: 10px 20px;
+        padding: 12px;
         color: white;
         font-size: 1rem;
         cursor: pointer;
-        border-radius: 5px;
-        margin: 5px;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+        font-weight: bold;
+
+        &:hover {
+          background: darken(#2F1893, 10%);
+        }
       }
 
       button:last-child {
-        background: red;
+        background: #ff4d4d;
+
+        &:hover {
+          background: darken(#ff4d4d, 10%);
+        }
       }
     }
   }
 }
-
-
 
 @media (max-width: 1200px) {
   .categorias-container {

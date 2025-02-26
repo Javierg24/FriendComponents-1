@@ -37,21 +37,26 @@ export class InicioComponent implements OnInit {
   verificarCookies(): void {
     const cookiesAceptadas = localStorage.getItem('cookiesAceptadas');
     if (!cookiesAceptadas) {
+      console.log("Mostrando modal y bloqueando scroll"); // Para ver si entra aquí
       this.mostrarModal = true;
+      document.body.classList.add("no-scroll"); // Bloquea el scroll
     }
   }
-
+  
   aceptarCookies(): void {
     localStorage.setItem('cookiesAceptadas', 'true');
     this.mostrarModal = false;
+    document.body.classList.remove("no-scroll"); // Restaura el scroll
+    console.log("Cookies aceptadas, eliminando no-scroll");
   }
-
+  
   rechazarCookies(): void {
     localStorage.removeItem('cookiesAceptadas');
     this.mostrarModal = false;
-    this.logout();
+    document.body.classList.remove("no-scroll"); // Restaura el scroll
+    console.log("Cookies rechazadas, eliminando no-scroll");
   }
-
+  
   logout(): void {
     localStorage.removeItem('usuario'); // Borra los datos de usuario
     this.router.navigate(['/login']); // Redirige a la pantalla de login
