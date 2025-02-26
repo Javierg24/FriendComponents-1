@@ -39,7 +39,7 @@ export class AuthService {
   // Método para cerrar sesión
   logout(): void {
     localStorage.removeItem('user');
-    this.cookieService.delete('user', '/', 'localhost'); // Eliminar cookie
+    this.cookieService.delete('cookiesAceptadas', '/', 'localhost'); // Eliminar cookie
     this.router.navigate(['/login']);
   }
 
